@@ -1,0 +1,10 @@
+<h1>Ordens de serviço</h1>
+<ul>
+    <% @ordems.each do |ordem| %>
+        <li>
+            <%= ordem.dataEmissao %>
+            <%= ordem.dataConclusao %>
+            <%= ordem.valor %>
+        <li>
+    <% end %>
+</ul>

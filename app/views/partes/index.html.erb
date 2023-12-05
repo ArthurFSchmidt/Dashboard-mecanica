@@ -1,0 +1,16 @@
+<h1>Partes</h1>
+
+<% @partes.each do |parte| %>
+    <ul>
+        <li>
+            <%= link_to parte.nome, parte %>
+        </li>
+        <li>
+            <%= parte.descricao %>
+        </li>
+        <li>
+            <%= parte.valor %>
+        </li>
+    </ul>
+<% end %>
+<%= link_to "Nova parte", new_parte_path %>

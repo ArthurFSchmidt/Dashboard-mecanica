@@ -1,0 +1,29 @@
+<%= form_with model: cliente do |form| %>
+    <div>
+        <%= form.label :nome %><br>
+        <%= form.text_field :nome %>
+        <% cliente.errors.full_messages_for(:nome).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :endereco %><br>
+        <%= form.text_field :endereco %>
+        <% cliente.errors.full_messages_for(:endereco).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :telefone %><br>
+        <%= form.text_field :telefone %>
+        <% cliente.errors.full_messages_for(:telefone).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>

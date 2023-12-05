@@ -1,0 +1,2 @@
+class Ordem < ApplicationRecord
+end

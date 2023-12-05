@@ -1,0 +1,14 @@
+<h1>Mecânicos</h1>
+
+<% @mecanicos.each do |mecanico| %>
+    <ul>
+        <li>
+            <%= link_to mecanico.nome, mecanico_path(id: mecanico) %>
+        </li>
+
+        <li>
+            <%= mecanico.especialidade %>
+        </li>
+    </ul>
+<% end %>
+<%= link_to "Novo mecânico", new_mecanico_path %>

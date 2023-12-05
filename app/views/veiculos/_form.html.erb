@@ -1,0 +1,53 @@
+<%= form_with model: veiculo, url: cliente_veiculos_path do |form| %>
+    <div>
+        <%= form.label :placa %><br>
+        <%= form.text_field :placa %>
+        <% veiculo.errors.full_messages_for(:placa).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :marca %><br>
+        <%= form.text_field :marca %>
+        <% veiculo.errors.full_messages_for(:marca).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :modelo %><br>
+        <%= form.text_field :modelo %>
+        <% veiculo.errors.full_messages_for(:modelo).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :ano %><br>
+        <%= form.text_field :ano %>
+        <% veiculo.errors.full_messages_for(:ano).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :cor %><br>
+        <%= form.text_field :cor %>
+        <% veiculo.errors.full_messages_for(:ano).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :descricao %><br>
+        <%= form.text_field :descricao %>
+        <% veiculo.errors.full_messages_for(:descricao).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>

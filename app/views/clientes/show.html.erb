@@ -1,0 +1,21 @@
+<h2><%= @cliente.nome %></h2>
+<p><%= @cliente.endereco %></p>
+<p><%= @cliente.telefone %></p>
+
+<div class="container-fluid">
+    <div class="row row-cols-lg-3 row-cols-1 mx-3">
+        <% @veiculos.each do |veiculo| %>
+            <div class="g-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= link_to veiculo.placa, cliente_veiculo_path(cliente_id: @cliente,id: veiculo) %></h5>
+                        <p class="card-text"><%= veiculo.marca %></p>
+                        <p class="card-text"><%= veiculo.modelo %></p>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+<%= link_to "Adicionar Veiculo", new_cliente_veiculo_path(params[:id]) %>
+<%= link_to "Voltar", clientes_path %>
