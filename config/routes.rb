@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :ordems, :partes, :equipes, :mecanicos
+  resources :ordems, :partes, :equipes, :mecanicos, :servicos
 
   resources :clientes do
     resources :veiculos

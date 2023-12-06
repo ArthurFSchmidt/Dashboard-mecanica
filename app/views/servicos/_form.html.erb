@@ -1,0 +1,29 @@
+<%= form_with model: servico do |form| %>
+    <div>
+        <%= form.label :nome %><br>
+        <%= form.text_field :nome %>
+        <% servico.errors.full_messages_for(:nome).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :descricao %><br>
+        <%= form.text_field :descricao %>
+        <% servico.errors.full_messages_for(:descricao).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :valor %><br>
+        <%= form.text_field :valor %>
+        <% servico.errors.full_messages_for(:valor).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>

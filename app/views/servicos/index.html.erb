@@ -1,0 +1,16 @@
+<h1>Serviços</h1>
+
+<% @servicos.each do |servico| %>
+    <ul>
+        <li>
+            <%= link_to servico.nome, servico %>
+        </li>
+        <li>
+            <%= servico.descricao %>
+        </li>
+        <li>
+            <%= servico.valor %>
+        </li>
+    </ul>
+<% end %>
+<%= link_to "Novo Serviço", new_servico_path %>
