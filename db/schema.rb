@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_13_162642) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_07_041652) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,6 +44,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_162642) do
     t.float "valor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "veiculo_id"
+    t.bigint "equipe_id"
+    t.bigint "partes", array: true
+    t.bigint "servicos", array: true
+    t.index ["equipe_id"], name: "index_ordems_on_equipe_id"
+    t.index ["veiculo_id"], name: "index_ordems_on_veiculo_id"
   end
 
   create_table "partes", force: :cascade do |t|
