@@ -1,11 +1,33 @@
 <h1>Equipes</h1>
 
-<% @equipes.each do |equipe| %>
-    <ul>
-        <li>
-            <%= link_to equipe.nome, equipe %>
-        </li>
-    </ul>
+<%= link_to new_equipe_path, class: "text-decoration-none fs-4" do %>
+    <div>
+        <i class="bi bi-plus-circle"></i> Novo
+    </div>
 <% end %>
 
-<%= link_to "Nova Equipe", new_equipe_path %>
+<table class="table table-bordered table-hover table-striped mt-3">
+    <thead>
+        <tr>
+            <td class="col">#</td>
+            <td class="col">Nome</td>
+            <td class="col">Nº integrantes</td>
+            <td class="col">Ações</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% @equipes.each do |equipe| %>
+            <tr>
+                <td><%= equipe.id %></td>
+                <td><%= equipe.nome %></td>
+                <td><%= equipe.numIntegrantes? %></td>
+                <td>
+                    <%= link_to equipe, class: "text-decoration-none" do %>
+                        <i class="bi bi-eye-fill fs-4 link-dark"></i>
+                    <% end %>
+                    <i class="bi bi-pen-fill fs-4 link-dark"></i>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
