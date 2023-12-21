@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :ordems, :partes, :equipes, :mecanicos, :servicos
 
-  patch 'ordem/configurar', to: 'ordems#configurar'
-
   resources :clientes do
     resources :veiculos
   end

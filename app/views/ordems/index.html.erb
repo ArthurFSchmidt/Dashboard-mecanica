@@ -2,8 +2,8 @@
 <ul>
     <% @ordems.each do |ordem| %>
         <li>
-            <%= ordem.dataEmissao %>
-            <%= ordem.dataConclusao %>
+            <%= link_to Veiculo.find(ordem.veiculo_id).placa, ordem %>
+            Valor:
             <%= ordem.valor %>
         <li>
     <% end %>

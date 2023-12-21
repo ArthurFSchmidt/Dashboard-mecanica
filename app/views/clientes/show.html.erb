@@ -1,21 +1,46 @@
-<h2><%= @cliente.nome %></h2>
-<p><%= @cliente.endereco %></p>
-<p><%= @cliente.telefone %></p>
-
-<div class="container-fluid">
-    <div class="row row-cols-lg-3 row-cols-1 mx-3">
-        <% @veiculos.each do |veiculo| %>
-            <div class="g-5">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= link_to veiculo.placa, cliente_veiculo_path(cliente_id: @cliente,id: veiculo) %></h5>
-                        <p class="card-text"><%= veiculo.marca %></p>
-                        <p class="card-text"><%= veiculo.modelo %></p>
-                    </div>
-                </div>
-            </div>
-        <% end %>
+<%= link_to clientes_path, class: "mt-3 text-decoration-none fs-4" do %>
+    <div>
+        <i class="bi bi-arrow-return-left"></i> Voltar
     </div>
-</div>
-<%= link_to "Adicionar Veiculo", new_cliente_veiculo_path(params[:id]) %>
-<%= link_to "Voltar", clientes_path %>
+<% end %>
+
+<h2 class="mt-2"><%= @cliente.nome %></h2>
+<h5>Telefone: </h5>
+<p><%= @cliente.telefone %></p>
+<h5>Endereço: </h5>
+<p><%= @cliente.endereco %></p>
+
+<%= link_to new_cliente_veiculo_path(params[:id]), class: "text-decoration-none fs-4" do %>
+    <div>
+        <i class="bi bi-plus-circle"></i> Novo
+    </div>
+<% end %>
+
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th class="col">#</th>
+            <th class="col">Placa</th>
+            <th class="col">Modelo</th>
+            <th class="col">Ano</th>
+            <th class="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>    
+        <% @veiculos.each do |veiculo| %>
+            <tr>
+                <td><%= veiculo.id %></td>
+                <td><%= veiculo.placa %></td>
+                <td><%= veiculo.modelo %></td>
+                <td><%= veiculo.ano %></td>
+                <td>
+                    <%= link_to cliente_veiculo_path(cliente_id: @cliente, id: veiculo), class: "text-decoration-none" do %>
+                        <i class="bi bi-eye-fill fs-4 link-dark"></i>
+                    <% end %>
+                    <i class="bi bi-pen-fill fs-4 link-dark"></i>
+                </td>
+            </tr>
+        <% end %>
+        <hr>
+    </tbody>
+</table>

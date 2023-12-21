@@ -1,17 +1,35 @@
 <h1>Clientes</h1>
+<%= link_to new_cliente_path, class: "text-decoration-none fs-4" do %>
+    <div>
+        <i class="bi bi-plus-circle"></i> Novo
+    </div>
+<% end %>
 
-<ul>
-    <% @clientes.each do |cliente| %>
-        <li>
-            <%= link_to cliente.nome, cliente %>
-        </li>
-        <li>
-            <%= cliente.endereco %>
-        </li>
-        <li>
-            <%= cliente.telefone %>
-        </li>
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th class="col">#</th>
+            <th class="col">Nome</th>
+            <th class="col">Telefone</th>
+            <th class="col">Endereço</th>
+            <th class="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>    
+        <% @clientes.each do |cliente| %>
+            <tr>
+                <td><%= cliente.id %></td>
+                <td><%= cliente.nome %></td>
+                <td><%= cliente.telefone %></td>
+                <td><%= cliente.endereco %></td>
+                <td>
+                    <%= link_to cliente, class: "text-decoration-none" do %>
+                        <i class="bi bi-eye-fill fs-4 link-dark"></i>
+                    <% end %>
+                    <i class="bi bi-pen-fill fs-4 link-dark"></i>
+                </td>
+            </tr>
+        <% end %>
         <hr>
-    <% end %>
-    <%= link_to "Adicionar cliente", new_cliente_path %>
-</ul>
+    </tbody>
+</table>

@@ -15,18 +15,21 @@
             <div><%= message %></div>
         <% end %>
     </div>
+
+    <div>
+        <%= form.label :partes %><br>
+        <%= form.collection_check_boxes :partes, @partes, :id, :nome, multiple: true  %>
+    </div>
+
+    <div>
+        <%= form.label :servicos %><br>
+        <%= form.collection_check_boxes :servicos, @servicos, :id, :nome, multiple: true %>
+    </div>
     
     <div>
         <%= form.label :dataEmissao, 'Data de Emissão' %><br>
         <%= form.datetime_select :dataEmissao %>
         <% ordem.errors.full_messages_for(:dataEmissao).each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-    <div>
-        <%= form.label :dataConclusao, 'Data de Conclusão' %><br>
-        <%= form.datetime_select :dataConclusao %>
-        <% ordem.errors.full_messages_for(:dataConclusao).each do |message| %>
             <div><%= message %></div>
         <% end %>
     </div>
