@@ -1,16 +1,36 @@
 <h1>Partes</h1>
 
-<% @partes.each do |parte| %>
-    <ul>
-        <li>
-            <%= link_to parte.nome, parte %>
-        </li>
-        <li>
-            <%= parte.descricao %>
-        </li>
-        <li>
-            <%= parte.valor %>
-        </li>
-    </ul>
+<%= link_to new_parte_path, class: "text-decoration-none fs-4" do %>
+    <div>
+        <i class="bi bi-plus-circle"></i> Novo
+    </div>
 <% end %>
-<%= link_to "Nova parte", new_parte_path %>
+
+<table class="table table-bordered table-hover table-striped mt-3">
+    <thead>
+        <tr>
+            <th class="col">#</th>
+            <th class="col">Nome</th>
+            <th class="col">Modelo</th>
+            <th class="col">Valor</th>
+            <th class="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @partes.each do |parte| %>
+            <tr>
+                <td><%= parte.id %></td>
+                <td><%= parte.nome %></td>
+                <td><%= parte.modelo %></td>
+                <td><%= parte.valor %></td>
+                <td>
+                    <%= link_to parte, class: "text-decoration-none" do %>
+                        <i class="bi bi-eye-fill fs-4 link-dark"></i>
+                    <% end %>
+                    <i class="bi bi-pen-fill fs-4 link-dark"></i>
+                </td>
+
+            </tr>
+        <% end %>
+    </tbody>
+</table>

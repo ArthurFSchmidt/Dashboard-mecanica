@@ -1,16 +1,34 @@
 <h1>Serviços</h1>
 
-<% @servicos.each do |servico| %>
-    <ul>
-        <li>
-            <%= link_to servico.nome, servico %>
-        </li>
-        <li>
-            <%= servico.descricao %>
-        </li>
-        <li>
-            <%= servico.valor %>
-        </li>
-    </ul>
+<%= link_to new_servico_path, class: "text-decoration-none fs-4" do %>
+    <div>
+        <i class="bi bi-plus-circle"></i> Novo
+    </div>
 <% end %>
-<%= link_to "Novo Serviço", new_servico_path %>
+
+<table class="table table-bordered table-hover table-striped mt-3">
+    <thead>
+        <tr>
+            <th class="col">#</th>
+            <th class="col">Nome</th>
+            <th class="col">Valor</th>
+            <th class="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @servicos.each do |servico| %>
+            <tr>
+                <td><%= servico.id %></td>
+                <td><%= servico.nome %></td>
+                <td><%= servico.valor %></td>
+                <td>
+                    <%= link_to servico, class: "text-decoration-none" do %>
+                        <i class="bi bi-eye-fill fs-4 link-dark"></i>
+                    <% end %>
+                    <i class="bi bi-pen-fill fs-4 link-dark"></i>
+                </td>
+
+            </tr>
+        <% end %>
+    </tbody>
+</table>

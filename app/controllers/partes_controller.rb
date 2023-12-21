@@ -23,6 +23,6 @@ class PartesController < ApplicationController
 
   private
     def parte_params
-      params.require(:parte).permit(:nome, :descricao, :valor)
+      params.require(:parte).permit(:nome, :descricao, :modelo, :valor)
     end
 end
