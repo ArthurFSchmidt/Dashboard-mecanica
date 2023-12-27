@@ -1,4 +1,5 @@
 class MecanicosController < ApplicationController
+  before_action :authenticate_user!
   def index
     @mecanicos = Mecanico.all
   end

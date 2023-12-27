@@ -4,6 +4,5 @@ class Servico < ApplicationRecord
   validates :descricao, presence: true
   validates :valor, presence: true
 
-  has_many :ordems, through: :ordems_servicos
-  has_many :ordems_servicos, dependent: :destroy
+
 end

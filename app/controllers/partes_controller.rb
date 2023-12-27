@@ -1,4 +1,5 @@
 class PartesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @partes = Parte.all
   end

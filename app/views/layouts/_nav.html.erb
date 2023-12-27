@@ -18,5 +18,10 @@
         <li class="nav-item">
             <%= link_to "Serviços", servicos_path, class: 'text-decoration-none nav-link active' %>
         </li>
+        <% if user_signed_in? %>
+            <li class="nav-item">
+                <%= link_to "Log out", destroy_user_session_path, {"turbo-method": :delete, class: 'text-decoration-none nav-link active'} %>
+            </li>
+        <% end %>
     </ul>
 </nav>

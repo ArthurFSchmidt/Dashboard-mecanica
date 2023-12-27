@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :ordems, :partes, :equipes, :mecanicos, :servicos
 
   resources :clientes do

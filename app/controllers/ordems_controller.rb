@@ -1,4 +1,5 @@
 class OrdemsController < ApplicationController
+  before_action :authenticate_user!
   before_action :carregarDependencias, only: [:new, :index, :edit]
 
   def index

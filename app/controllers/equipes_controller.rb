@@ -1,4 +1,5 @@
 class EquipesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @equipes = Equipe.all
   end
