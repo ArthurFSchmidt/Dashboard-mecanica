@@ -1,11 +1,41 @@
 <h1>Ordens de serviço</h1>
-<ul>
-    <% @ordems.each do |ordem| %>
-        <li>
-            <%= link_to Veiculo.find(ordem.veiculo_id).placa, ordem %>
-            Valor:
-            <%= ordem.valor %>
-        <li>
-    <% end %>
-</ul>
-<%= link_to "Nova Ordem de Serviço", new_ordem_path %>
+
+<%= link_to new_ordem_path, class: "text-decoration-none fs-4" do %>
+    <div>
+        <i class="bi bi-plus-circle"></i> Novo
+    </div>
+<% end %>
+
+<table class="table table-bordered table-hover table-striped mt-3">
+    <thead>
+        <tr>
+            <th class="col">#</th>
+            <th class="col">Placa</th>
+            <th class="col">Status</th>
+            <th class="col">Equipe</th>
+            <th class="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @ordems.each do |ordem| %>
+            <tr>
+                <td><%= ordem.id %></td>
+                <td><%= @veiculos.find(ordem.veiculo_id).placa %></td>
+                <td><%= ordem.status %></td>
+                <% if ordem.equipe_id != nil %>
+                    <td><%= @equipes.find(ordem.equipe_id).nome %></td>
+                <% else %>
+                    <td></td>
+                <% end %>
+                <td>
+                    <%= link_to ordem, class: "text-decoration-none" do %>
+                        <i class="bi bi-eye-fill fs-4 link-dark"></i>
+                    <% end %>
+                    <%= link_to edit_ordem_path(ordem), class: "text-decoration-none" do %>
+                        <i class="bi bi-pen-fill fs-4 link-dark"></i>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

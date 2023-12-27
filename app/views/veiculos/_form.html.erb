@@ -1,53 +1,53 @@
-<%= form_with model: veiculo, url: cliente_veiculos_path do |form| %>
+<%= form_with model: veiculo, url: cliente_veiculos_path, class:"col-10" do |form| %>
     <div>
-        <%= form.label :placa %><br>
-        <%= form.text_field :placa %>
+        <%= form.label :placa, class:"form-label mt-2" %><br>
+        <%= form.text_field :placa, class:"form-control" %>
         <% veiculo.errors.full_messages_for(:placa).each do |message| %>
             <div><%= message %></div>
         <% end %>
     </div>
 
     <div>
-        <%= form.label :marca %><br>
-        <%= form.text_field :marca %>
+        <%= form.label :marca, class:"form-label mt-2" %><br>
+        <%= form.text_field :marca, class:"form-control" %>
         <% veiculo.errors.full_messages_for(:marca).each do |message| %>
             <div><%= message %></div>
         <% end %>
     </div>
 
     <div>
-        <%= form.label :modelo %><br>
-        <%= form.text_field :modelo %>
+        <%= form.label :modelo, class:"form-label mt-2" %><br>
+        <%= form.text_field :modelo, class:"form-control" %>
         <% veiculo.errors.full_messages_for(:modelo).each do |message| %>
             <div><%= message %></div>
         <% end %>
     </div>
 
     <div>
-        <%= form.label :ano %><br>
-        <%= form.text_field :ano %>
+        <%= form.label :ano, class:"form-label mt-2" %><br>
+        <%= form.text_field :ano, class:"form-control"%>
         <% veiculo.errors.full_messages_for(:ano).each do |message| %>
             <div><%= message %></div>
         <% end %>
     </div>
 
     <div>
-        <%= form.label :cor %><br>
-        <%= form.text_field :cor %>
+        <%= form.label :cor, class:"form-label mt-2" %><br>
+        <%= form.text_field :cor, class:"form-control" %>
         <% veiculo.errors.full_messages_for(:ano).each do |message| %>
             <div><%= message %></div>
         <% end %>
     </div>
 
     <div>
-        <%= form.label :descricao %><br>
-        <%= form.text_field :descricao %>
+        <%= form.label :descricao, class:"form-label mt-2" %><br>
+        <%= form.text_field :descricao, class:"form-control" %>
         <% veiculo.errors.full_messages_for(:descricao).each do |message| %>
             <div><%= message %></div>
         <% end %>
     </div>
 
-    <div>
+    <div class="mt-3">
         <%= form.submit %>
     </div>
 <% end %>

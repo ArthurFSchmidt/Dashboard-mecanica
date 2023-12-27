@@ -21,6 +21,20 @@ class PartesController < ApplicationController
     end
   end
 
+  def edit
+    @parte = Parte.find(params[:id])
+  end
+
+  def update
+    @parte = Parte.find(params[:id])
+
+    if @parte.update(ordem_params)
+      redirect_to @parte
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
     def parte_params
       params.require(:parte).permit(:nome, :descricao, :modelo, :valor)

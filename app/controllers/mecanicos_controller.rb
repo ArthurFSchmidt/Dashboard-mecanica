@@ -21,6 +21,20 @@ class MecanicosController < ApplicationController
     end
   end
 
+  def edit
+    @mecanico = Mecanico.find(params[:id])
+  end
+
+  def update
+    @mecanico = Mecanico.find(params[:id])
+
+    if @mecanico.update(ordem_params)
+      redirect_to @mecanico
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
     def mecanico_params
       params.require(:mecanico).permit(:nome, :endereco, :especialidade)

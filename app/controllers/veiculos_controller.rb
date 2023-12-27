@@ -23,6 +23,22 @@ class VeiculosController < ApplicationController
     end
   end
 
+  def edit
+    @cliente = Cliente.find(params[:cliente_id])
+    @veiculo = Veiculo.find(params[:id])
+  end
+
+  def update
+    @cliente = Cliente.find(params[:cliente_id])
+    @veiculo = Veiculo.find(params[:id])
+
+    if @veiculo.update(ordem_params)
+      redirect_to @veiculo
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
     def veiculo_params
       params.require(:veiculo).permit(:placa, :marca, :modelo, :ano, :cor, :descricao)

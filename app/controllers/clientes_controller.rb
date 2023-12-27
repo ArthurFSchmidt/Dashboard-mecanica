@@ -22,6 +22,20 @@ class ClientesController < ApplicationController
     @veiculos = Veiculo.where(cliente_id: params[:id])
   end
 
+  def edit
+    @cliente = Cliente.find(params[:id])
+  end
+
+  def update
+    @cliente = Cliente.find(params[:id])
+
+    if @cliente.update(ordem_params)
+      redirect_to @cliente
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
     def cliente_params
       params.require(:cliente).permit(:nome, :endereco, :telefone)

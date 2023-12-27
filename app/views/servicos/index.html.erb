@@ -25,9 +25,10 @@
                     <%= link_to servico, class: "text-decoration-none" do %>
                         <i class="bi bi-eye-fill fs-4 link-dark"></i>
                     <% end %>
-                    <i class="bi bi-pen-fill fs-4 link-dark"></i>
+                    <%= link_to edit_servico_path(servico), class: "text-decoration-none" do %>
+                        <i class="bi bi-pen-fill fs-4 link-dark"></i>
+                    <% end %>
                 </td>
-
             </tr>
         <% end %>
     </tbody>

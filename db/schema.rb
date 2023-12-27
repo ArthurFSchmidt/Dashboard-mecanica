@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_11_153258) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_27_082947) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_11_153258) do
     t.bigint "equipe_id"
     t.bigint "partes", default: [], array: true
     t.bigint "servicos", default: [], array: true
+    t.text "problema"
+    t.string "status"
+    t.string "placa"
     t.index ["equipe_id"], name: "index_ordems_on_equipe_id"
     t.index ["partes"], name: "index_ordems_on_partes", using: :gin
     t.index ["servicos"], name: "index_ordems_on_servicos", using: :gin
@@ -55,15 +58,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_11_153258) do
   end
 
   create_table "ordems_partes", force: :cascade do |t|
-    t.bigint "parte_id"
     t.bigint "ordem_id"
+    t.bigint "parte_id"
     t.index ["ordem_id"], name: "index_ordems_partes_on_ordem_id"
     t.index ["parte_id"], name: "index_ordems_partes_on_parte_id"
   end
 
   create_table "ordems_servicos", force: :cascade do |t|
-    t.bigint "servico_id"
     t.bigint "ordem_id"
+    t.bigint "servico_id"
     t.index ["ordem_id"], name: "index_ordems_servicos_on_ordem_id"
     t.index ["servico_id"], name: "index_ordems_servicos_on_servico_id"
   end

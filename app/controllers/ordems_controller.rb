@@ -1,5 +1,5 @@
 class OrdemsController < ApplicationController
-  before_action :carregarDependencias, only: [:new, :show]
+  before_action :carregarDependencias, only: [:new, :index, :edit]
 
   def index
     @ordems = Ordem.all
@@ -9,33 +9,44 @@ class OrdemsController < ApplicationController
     @ordem = Ordem.find(params[:id])
     @veiculo = Veiculo.find(@ordem.veiculo_id)
     @equipe = Equipe.find(@ordem.equipe_id)
+    @partes = []
+    @servicos = []
   end
 
   def new
+    @novo = true
     @ordem = Ordem.new
   end
 
   def create
-    params = ordem_params
-    params.delete(:partes)
-    params.delete(:servicos)
-    @ordem = Ordem.new(params)
+
+    @ordem = Ordem.new(ordem_params)
 
     if @ordem.save
-      partes = ordem_params[:partes]
-      servicos = ordem_params[:servicos]
-      puts partes
-      puts servicos
       redirect_to @ordem
     else
       render :new, status: :unprocessable_entity
     end
   end
 
+  def edit
+    @novo = false
+    @ordem = Ordem.find(params[:id])
+  end
+
+  def update
+    @ordem = Ordem.find(params[:id])
+
+    if @ordem.update(ordem_params)
+      redirect_to @ordem
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
     def ordem_params
-      params.require(:partes, :servicos)
-      params.require(:ordem).permit(:dataEmissao, :dataConclusao, :valor, :veiculo_id, :equipe_id)
+      params.require(:ordem).permit(:dataEmissao, :problema, :equipe_id, :status, :veiculo_id, :partes, :servicos)
     end
 
     def carregarDependencias

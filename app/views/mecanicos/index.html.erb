@@ -27,7 +27,9 @@
                     <%= link_to mecanico, class: "text-decoration-none" do %>
                         <i class="bi bi-eye-fill fs-4 link-dark"></i>
                     <% end %>
-                    <i class="bi bi-pen-fill fs-4 link-dark"></i>
+                    <%= link_to edit_mecanico_path(mecanico), class: "text-decoration-none" do %>
+                        <i class="bi bi-pen-fill fs-4 link-dark"></i>
+                    <% end %>
                 </td>
             </tr>
         <% end %>

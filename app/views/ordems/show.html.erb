@@ -1,6 +1,6 @@
 <%= link_to "Voltar", ordems_path %>
 
-<p>Veículo: <%= @veiculo.placa %></p>
+<h2>Veículo: <%= @veiculo.placa %></h2>
 
 <p>Equipe: <%= @equipe.nome %></p>
 
@@ -9,3 +9,65 @@
 <p>Emissão: <%= @ordem.dataEmissao %></p>
 
 <p>Conclusão: <%= @ordem.dataConclusao %></p>
+
+<h3>Partes</h3>
+
+<table class="table table-bordered table-hover table-striped mt-3">
+    <thead>
+        <tr>
+            <th class="col">#</th>
+            <th class="col">Nome</th>
+            <th class="col">Modelo</th>
+            <th class="col">Valor</th>
+            <th class="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @partes.each do |parte| %>
+            <tr>
+                <td><%= parte.id %></td>
+                <td><%= parte.nome %></td>
+                <td><%= parte.modelo %></td>
+                <td><%= parte.valor %></td>
+                <td>
+                    <%= link_to parte, class: "text-decoration-none" do %>
+                        <i class="bi bi-eye-fill fs-4 link-dark"></i>
+                    <% end %>
+                    <%= link_to edit_parte_path(parte), class: "text-decoration-none" do %>
+                        <i class="bi bi-pen-fill fs-4 link-dark"></i>
+                    <% end %>
+                </td>
+
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<h3>Serviços</h3>
+<table class="table table-bordered table-hover table-striped mt-3">
+    <thead>
+        <tr>
+            <th class="col">#</th>
+            <th class="col">Nome</th>
+            <th class="col">Valor</th>
+            <th class="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @servicos.each do |servico| %>
+            <tr>
+                <td><%= servico.id %></td>
+                <td><%= servico.nome %></td>
+                <td><%= servico.valor %></td>
+                <td>
+                    <%= link_to servico, class: "text-decoration-none" do %>
+                        <i class="bi bi-eye-fill fs-4 link-dark"></i>
+                    <% end %>
+                    <%= link_to edit_servico_path(servico), class: "text-decoration-none" do %>
+                        <i class="bi bi-pen-fill fs-4 link-dark"></i>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

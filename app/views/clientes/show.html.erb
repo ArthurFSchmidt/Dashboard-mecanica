@@ -37,7 +37,9 @@
                     <%= link_to cliente_veiculo_path(cliente_id: @cliente, id: veiculo), class: "text-decoration-none" do %>
                         <i class="bi bi-eye-fill fs-4 link-dark"></i>
                     <% end %>
-                    <i class="bi bi-pen-fill fs-4 link-dark"></i>
+                    <%= link_to edit_cliente_veiculo_path(cliente_id: @cliente, id: veiculo), class: "text-decoration-none" do %>
+                        <i class="bi bi-pen-fill fs-4 link-dark"></i>
+                    <% end %>
                 </td>
             </tr>
         <% end %>
